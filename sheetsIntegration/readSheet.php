@@ -23,17 +23,19 @@ function read_sheet($spreadsheetId = '') {
         $range = 'J:J';
         $response = $service->spreadsheets_values->get($spreadsheetId, $range);
         $values = $response->getValues();
+        var_dump($values);
+       
   
-        if (empty($values)) {
-            print "No data found.\n";
-        } else {
+        // if (empty($values)) {
+        //     print "No data found.\n";
+        // } else {
             
-            foreach ($values as $row) {
+        //     foreach ($values as $row) {
                
-                printf("%s\n", $row[0]);
-            }
+        //         printf("%s\n", $row[0]);
+        //     }
            
-        }
+        // }
     } catch(Exception $e) {
         if( 401 == $e->getCode() ) {
             $refresh_token = $db->get_refersh_token();
